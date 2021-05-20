@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+    <body>
+        <h2>ILLIGAL INFO</h2>
+
+        <form action='/illigalmethod' method='POST'>
+            <label for="fname">illigalnum</label><br>
+            <input type="text" id="illigalnum" name="illigalnum" value=""><br>
+
+            <label for="fname">carnum</label><br>
+            <input type="text" id="carnum" name="carnum" value=""><br>
+
+            <label for="fname">illigaltime</label><br>
+            <input type="text" id="illigaltime" name="illigaltime" value=""><br>
+
+            <label for="fname">cctvname</label><br>
+            <input type="text" id="cctvname" name="cctvname" value=""><br><br>
+        </form>
+        <input type="button" id="execute" value="execute">
+
+        <script>
+            $('#execute').click(function(){
+
+                var illigalnum=$('#illigalnum').val();
+                var carnum=$('#carnum').val();
+                var illigaltime=$('#illigaltime').val();
+                var cctvname=$('#cctvname').val();
+
+                var postdata={
+                    'illigalnum':illigalnum,'carnum':carnum,'illigaltime':illigaltime,'cctvname':cctvname
+                }
+                $.ajax({
+                    type:'POST',
+                    url:'{{url_for("illigalmethod")}}',
+                    data: JSON.stringify(postdata),
+                    dataType : 'json',
+                    contentType: "application/json; charset:UTF-8",
+                    success: function(data){
+                        alert('데이터 값: '+ data.result2['illigalnum']+" "+data.result2['carnum']+" "+data.result2['illigaltime']+" "+data.result2['cctvname'])
+                    },
+                    error:function(request, status, error){
+                        alert(error);
+                    } 
+                })
+            })
+        </script>
+
+    </body>
+</html>

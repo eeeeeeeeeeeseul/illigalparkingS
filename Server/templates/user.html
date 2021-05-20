@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2> USER INFO</h2>
+        {% for i in data %}
+        {{ loop.index }}
+        <br>
+        번호 : {{ i[0] }}<br>
+        이름 : {{ i[1] }}<br>
+        ID : {{ i[2] }}<br>
+        PW : {{ i[3] }}<br>
+        지역: {{ i[4] }}<br>
+
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>ILLIGAL INFO</h2>
+
+        {% for i in data %}
+        {{ loop.index }}
+        번호 : {{ i[0] }}<br>
+        차량 : {{ i[1] }}<br>
+        시간 : {{ i[2] }}<br>
+        CCTV : {{ i[3 ]}}<br>
+        {% endfor %}
+    </body>
+</html>

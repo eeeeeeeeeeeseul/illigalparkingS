@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+    <body>
+        <h2>CAR INFO</h2>
+        <label for="fname">carnum:</label><br>
+        <form>
+            <input type="text" id="carnum" name="carnum"><br>
+        
+            <label for="fname">phonenum:</label><br>
+            <input type="text" id="phonenum" name="phonenum"><br>
+
+        </form>
+        
+        <input type="button" id="execute" value="execute">
+
+
+        <script>
+            $('#execute').click(function(){
+
+                var carnum=$('#carnum').val();
+                var phonenum=$('#phonenum').val();
+
+                var postdata={
+                    'carnum':carnum, 'phonenum':phonenum
+                }
+                $.ajax({
+                    type:'POST',
+                    url:'{{url_for("carmethod")}}',
+                    data: JSON.stringify(postdata),
+                    dataType : 'json',
+                    contentType: "application/json; charset:UTF-8",
+                    success: function(data){
+                        alert('데이터 값: '+ data.result2['carnum']+" "+data.result2['phonenum'])
+                    },
+                    error:function(request, status, error){
+                        alert(error);
+                    } 
+                })
+            })
+
+        </script>
+    </body>
+</html>

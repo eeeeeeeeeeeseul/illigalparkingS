@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>CAR INFO</h2>
+
+        {% for i in data %}
+        {{ loop.index }}
+        <br>
+        차량 번호 : {{ i[0] }}<br>
+        휴대폰 : {{ i[1] }}<br>
+        {% endfor %}
+    </body>
+</html>
